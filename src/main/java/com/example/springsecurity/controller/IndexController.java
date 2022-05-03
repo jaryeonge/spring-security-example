@@ -55,8 +55,10 @@ public class IndexController {
         return "index"; // src/main/resources/templates/index.mustache
     }
 
+    // OAuth 로그인과 일반 로그인이 합쳐져서 PrincipalDetails!
     @GetMapping("/user")
-    public @ResponseBody String user() {
+    public @ResponseBody String user(@AuthenticationPrincipal PrincipalDetails principalDetails) {
+        System.out.println("principalDetails: "+principalDetails.getUser());
         return "user";
     }
 
